@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,7 +16,7 @@ class UniversityController extends Controller
     public function index(Request $request): Response
     {
         $universities = University::withCount('courses')
-        > withAvg('courses', 'rating')
+            ->withAvg('courses', 'rating')
             ->search($request->search)
             ->filterByCourse($request->course)
             ->minRating($request->boolean('rating'))
@@ -30,6 +31,9 @@ class UniversityController extends Controller
         ]);
     }
 
+    /**
+     * Display the details of a specific university.
+     */
     public function show(University $university)
     {
         return Inertia::render('Universities/Show', [
