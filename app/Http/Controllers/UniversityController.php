@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class UniversityController extends Controller
 {   
@@ -14,14 +15,14 @@ class UniversityController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {   
-        $universities = University::withCount('cources')
+        $universities = University::withCount('courses')
             ->withAvg('courses', 'rating')
             ->orderByDesc('courses_avg_rating')
             ->paginate(10);
         return Inertia::render('Universities/Index',[
-            'universities' => University::all(),
+            'universities' => $universities,
         ]);
     }
 
