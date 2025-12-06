@@ -22,6 +22,14 @@ class University extends Model
     }
 
     /**
+     * Get the applications for this university.
+     */
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+
+    /**
      * Scope: Search universities by name.
      */
     public function scopeSearch(Builder $query, ?string $search): Builder

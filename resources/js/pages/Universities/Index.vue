@@ -62,7 +62,9 @@
                 <tbody class="divide-y divide-gray-200 bg-white">
                     <tr v-for="university in universities.data" :key="university.id">
                         <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                            <Link :href="`/universities/${university.id}`" class="hover:text-blue-600 hover:underline">
                             {{ university.name }}
+                            </Link>
                         </td>
                         <td class="px-6 py-4 text-sm text-blue-600">
                             <a :href="university.homepage" target="_blank" class="hover:underline">
@@ -84,7 +86,9 @@
         <div class="mt-8 space-y-4 sm:hidden">
             <div v-for="university in universities.data" :key="university.id"
                 class="rounded-lg border border-gray-200 bg-white p-4">
-                <h3 class="font-medium text-gray-900">{{ university.name }}</h3>
+                <Link :href="`/universities/${university.id}`" class="hover:text-blue-600">
+                <h3 class="font-medium text-gray-900 hover:underline">{{ university.name }}</h3>
+                </Link>
                 <a :href="university.homepage" target="_blank"
                     class="mt-1 block text-sm text-blue-600 hover:underline truncate">
                     {{ university.homepage }}
