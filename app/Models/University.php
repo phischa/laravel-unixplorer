@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,11 +45,21 @@ class University extends Model
 
     /**
      * Scope: Filter universities with minimum average rating of 4.
+     *
+     * Uses raw SQL subquery instead of HAVING clause because SQLite
+     * does not support HAVING on non-aggregated queries. The withAvg()
+     * method creates a subquery, not a true aggregate, so we must
+     * calculate the average inline with a WHERE subquery.
      */
     public function scopeMinRating(Builder $query, bool $apply = false): Builder
     {
         return $query->when($apply, function ($query) {
-            $query->having('courses_avg_rating', '>=', 4);
+            $query->whereRaw('
+            (SELECT AVG(courses.rating) 
+             FROM courses 
+             INNER JOIN course_university ON courses.id = course_university.course_id 
+             WHERE universities.id = course_university.university_id) >= 4
+        ');
         });
     }
 }

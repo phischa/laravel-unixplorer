@@ -11,6 +11,35 @@
             </h2>
         </div>
 
+        <!-- Filters -->
+        <div class="mt-6 flex flex-col sm:flex-row gap-4">
+            <!-- Search Input -->
+            <div class="flex-1">
+                <input v-model="filters.search" type="text" placeholder="Search by name..."
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500" />
+            </div>
+
+            <!-- Course Filter -->
+            <div class="sm:w-64">
+                <select v-model="filters.course"
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="">All Courses</option>
+                    <option v-for="course in courses" :key="course.id" :value="course.id">
+                        {{ course.name }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Rating Checkbox -->
+            <div class="flex items-center self-end sm:self-auto">
+                <label class="flex items-center gap-2 text-sm text-gray-700">
+                    <input v-model="filters.rating" type="checkbox"
+                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                    Rating ≥ 4
+                </label>
+            </div>
+        </div>
+
         <!-- Desktop Table (hidden on mobile) -->
         <div class="mt-8 overflow-hidden rounded-lg border border-gray-200 hidden sm:block">
             <table class="min-w-full divide-y divide-gray-200">
@@ -85,13 +114,36 @@
 </template>
 
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, router } from "@inertiajs/vue3";
 import AppHeader from "@/Components/AppHeader.vue";
+import { reactive, watch } from "vue";
 
 /**
  * Page props passed from Laravel controller
  */
-defineProps({
+const props = defineProps({
     universities: Object,
+    courses: Array,
+    filters: Object,
 });
+
+/**
+ * Reactive filter state initialized from server-side values
+ */
+const filters = reactive({
+    search: props.filters?.search ?? '',
+    course: props.filters?.course ?? '',
+    rating: props.filters?.rating ?? false,
+});
+
+/**
+ * Watch for filter changes and reload page with new parameters
+ */
+watch(filters, (newFilters) => {
+    router.get('/', newFilters, {
+        preserveState: true,
+        preserveScroll: true,
+        replace: true,
+    });
+}, { deep: true });
 </script>
