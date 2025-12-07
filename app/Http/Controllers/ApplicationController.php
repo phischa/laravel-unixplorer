@@ -20,7 +20,7 @@ class ApplicationController extends Controller
         ]);
 
         // Check: Cannot apply twice to same university with same email
-        $existingApplication = Application::where('university_is', $university->id)
+        $existingApplication = Application::where('university_id', $university->id)
             ->where('email', $validated['email'])
             ->exists();
 

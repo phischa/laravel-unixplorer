@@ -4,7 +4,7 @@
 
     <AppHeader />
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 px-4">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4 px-4">
         <div class="min-w-0 flex-1">
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 Universities in Germany
@@ -63,7 +63,7 @@
                     <tr v-for="university in universities.data" :key="university.id">
                         <td class="px-6 py-4 text-sm font-medium text-gray-900">
                             <Link :href="`/universities/${university.id}`" class="hover:text-blue-600 hover:underline">
-                            {{ university.name }}
+                                {{ university.name }}
                             </Link>
                         </td>
                         <td class="px-6 py-4 text-sm text-blue-600">
@@ -87,7 +87,7 @@
             <div v-for="university in universities.data" :key="university.id"
                 class="rounded-lg border border-gray-200 bg-white p-4">
                 <Link :href="`/universities/${university.id}`" class="hover:text-blue-600">
-                <h3 class="font-medium text-gray-900 hover:underline">{{ university.name }}</h3>
+                    <h3 class="font-medium text-gray-900 hover:underline">{{ university.name }}</h3>
                 </Link>
                 <a :href="university.homepage" target="_blank"
                     class="mt-1 block text-sm text-blue-600 hover:underline truncate">
@@ -101,7 +101,7 @@
         </div>
 
         <!-- Pagination -->
-        <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="mt-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p class="text-sm text-gray-700">
                 Showing {{ universities.from }} to {{ universities.to }} of {{ universities.total }} universities
             </p>

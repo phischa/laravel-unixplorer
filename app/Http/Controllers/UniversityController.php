@@ -34,10 +34,10 @@ class UniversityController extends Controller
     /**
      * Display the details of a specific university.
      */
-    public function show(University $university)
+    public function show(University $university): Response
     {
         return Inertia::render('Universities/Show', [
-            'university' => $university,
+            'university' => $university->load('courses'),
         ]);
     }
 }
