@@ -28,7 +28,7 @@ class ApplicationResultMail extends Mailable
         $status = $this->application->status === 'accepted' ? 'Accepted' : 'Rejected';
 
         return new Envelope(
-            subject: 'Application ($status) - is->application->university->name}',
+            subject: "Application {$status} - {$this->application->university->name}",
         );
     }
 
