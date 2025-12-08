@@ -13,7 +13,8 @@
         <!-- University Details -->
         <div class="mt-6">
             <h1 class="text-3xl font-bold text-gray-900">{{ university.name }}</h1>
-            <a :href="university.homepage" target="_blank" class="mt-2 inline-block text-blue-600 hover:underline">
+            <a :href="university.homepage ?? ''" target="_blank"
+                class="mt-2 inline-block text-blue-600 hover:underline">
                 {{ university.homepage }}
             </a>
         </div>
@@ -34,8 +35,8 @@
             <h2 class="text-xl font-semibold text-gray-900">Apply to this University</h2>
 
             <!-- Success Message -->
-            <div v-if="$page.props.flash?.success" class="mt-4 rounded-lg bg-green-50 p-4 text-sm text-green-700">
-                {{ $page.props.flash.success }}
+            <div v-if="page.props.flash?.success" class="mt-4 rounded-lg bg-green-50 p-4 text-sm text-green-700">
+                {{ page.props.flash.success }}
             </div>
 
             <form @submit.prevent="submitApplication" class="mt-4 space-y-4">
@@ -75,13 +76,16 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AppHeader from "@/Components/AppHeader.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
+import type { University, AppPageProps } from "@/types";
 
-const props = defineProps({
-    university: Object,
-});
+const props = defineProps<{
+    university: University;
+}>();
+
+const page = usePage<AppPageProps>();
 
 /**
  * Form state managed by Inertia's useForm helper

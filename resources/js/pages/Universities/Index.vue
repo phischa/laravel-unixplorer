@@ -67,7 +67,7 @@
                             </Link>
                         </td>
                         <td class="px-6 py-4 text-sm text-blue-600">
-                            <a :href="university.homepage" target="_blank" class="hover:underline">
+                            <a :href="university.homepage ?? ''" target="_blank" class="hover:underline">
                                 {{ university.homepage }}
                             </a>
                         </td>
@@ -89,7 +89,7 @@
                 <Link :href="`/universities/${university.id}`" class="hover:text-blue-600">
                     <h3 class="font-medium text-gray-900 hover:underline">{{ university.name }}</h3>
                 </Link>
-                <a :href="university.homepage" target="_blank"
+                <a :href="university.homepage ?? ''" target="_blank"
                     class="mt-1 block text-sm text-blue-600 hover:underline truncate">
                     {{ university.homepage }}
                 </a>
@@ -111,30 +111,33 @@
                         'bg-blue-600 text-white': link.active,
                         'bg-gray-100 text-gray-700 hover:bg-gray-200': !link.active && link.url,
                         'bg-gray-50 text-gray-400 cursor-not-allowed': !link.url
-                    }" v-html="link.label" :preserve-scroll="true" />
+                    }">
+                    <span v-html="link.label"></span>
+                </Link>
             </nav>
         </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Head, Link, router } from "@inertiajs/vue3";
 import AppHeader from "@/Components/AppHeader.vue";
 import { reactive, watch } from "vue";
+import type { PaginatedUniversities, Course, Filters } from "@/types";
 
 /**
  * Page props passed from Laravel controller
  */
-const props = defineProps({
-    universities: Object,
-    courses: Array,
-    filters: Object,
-});
+const props = defineProps<{
+    universities: PaginatedUniversities;
+    courses: Course[];
+    filters: Filters;
+}>();
 
 /**
  * Reactive filter state initialized from server-side values
  */
-const filters = reactive({
+const filters = reactive<Filters>({
     search: props.filters?.search ?? '',
     course: props.filters?.course ?? '',
     rating: props.filters?.rating ?? false,
