@@ -31,7 +31,7 @@
         </div>
 
         <!-- Application Form -->
-        <div class="mt-12 max-w-md">
+        <div class="mt-12 mb-8 max-w-md">
             <h2 class="text-xl font-semibold text-gray-900">Apply to this University</h2>
 
             <!-- Success Message -->
@@ -81,6 +81,9 @@ import AppHeader from "@/Components/AppHeader.vue";
 import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
 import type { University, AppPageProps } from "@/types";
 
+/**
+ * Page props passed from Laravel controller
+ */
 const props = defineProps<{
     university: University;
 }>();

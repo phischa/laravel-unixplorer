@@ -8,6 +8,9 @@ use App\Models\University;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Handles university application submissions.
+ */
 class ApplicationController extends Controller
 {
     /**

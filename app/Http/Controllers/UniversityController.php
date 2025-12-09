@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
+/**
+ * Handles university listing and detail views.
+ */
 class UniversityController extends Controller
 {
     /**

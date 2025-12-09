@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Represents a german university.
+ */
 class University extends Model
 {
     /** @use HasFactory<\Database\Factories\UniversityFactory> */
@@ -16,7 +21,7 @@ class University extends Model
     /**
      * Get the courses offered by this university.
      */
-    public function courses()
+    public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class);
     }
@@ -24,7 +29,7 @@ class University extends Model
     /**
      * Get the applications for this university.
      */
-    public function applications()
+    public function applications(): HasMany
     {
         return $this->hasMany(Application::class);
     }
