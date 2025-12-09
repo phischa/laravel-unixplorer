@@ -32,16 +32,17 @@
 
             <!-- Rating Checkbox -->
             <div class="flex items-center self-end sm:self-auto">
-                <label class="flex items-center gap-2 text-sm text-gray-700">
+                <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
                     <input v-model="filters.rating" type="checkbox"
-                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" />
                     Rating ≥ 4
                 </label>
             </div>
         </div>
 
         <!-- Desktop Table (hidden on mobile) -->
-        <div class="mt-8 overflow-hidden rounded-lg border border-gray-200 hidden sm:block">
+        <div v-if="universities.data.length > 0"
+            class="mt-8 overflow-hidden rounded-lg border border-gray-200 hidden sm:block">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
@@ -83,7 +84,7 @@
         </div>
 
         <!-- Mobile Cards (hidden on desktop) -->
-        <div class="mt-8 space-y-4 sm:hidden">
+        <div v-if="universities.data.length > 0" class="mt-8 space-y-4 sm:hidden">
             <div v-for="university in universities.data" :key="university.id"
                 class="rounded-lg border border-gray-200 bg-white p-4">
                 <Link :href="`/universities/${university.id}`" class="hover:text-blue-600">
@@ -100,8 +101,18 @@
             </div>
         </div>
 
+        <!-- Empty State -->
+        <div v-if="universities.data.length === 0" class="mt-8 text-center py-12">
+            <p class="text-gray-500">No universities found matching your criteria.</p>
+            <button @click="clearFilters"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded-full cursor-pointer">
+                Clear filters
+            </button>
+        </div>
+
         <!-- Pagination -->
-        <div class="mt-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div v-if="universities.data.length > 0"
+            class="mt-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p class="text-sm text-gray-700">
                 Showing {{ universities.from }} to {{ universities.to }} of {{ universities.total }} universities
             </p>
@@ -153,4 +164,13 @@ watch(filters, (newFilters) => {
         replace: true,
     });
 }, { deep: true });
+
+/**
+ * Reset all filters to default values
+ */
+function clearFilters() {
+    filters.search = '';
+    filters.course = '';
+    filters.rating = false;
+}
 </script>

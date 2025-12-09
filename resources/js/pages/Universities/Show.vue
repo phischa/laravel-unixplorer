@@ -68,7 +68,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" :disabled="form.processing"
-                    class="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50">
+                    class="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 cursor-pointer">
                     {{ form.processing ? 'Submitting...' : 'Submit Application' }}
                 </button>
             </form>
