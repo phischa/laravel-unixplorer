@@ -1,5 +1,30 @@
 # nextright Homework
 
+## My Implementation
+
+### Technical Details
+
+- **Query Scopes**: Moved filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`)
+- **SQLite Compatibility**: Used raw SQL subquery for rating filter since SQLite doesn't support HAVING on non-aggregated queries
+- **Flash Messages**: Configured Inertia middleware to share flash messages
+- **Form Handling**: Used Inertia's `useForm` helper for form state, validation errors, and loading states
+- **Background Jobs**: Application processing runs via queue with 15-second delay; emails logged to `storage/logs/laravel.log`
+
+### Running the Application
+
+Start the development servers:
+```bash
+php artisan serve      # Terminal 1
+npm run dev            # Terminal 2
+php artisan queue:work # Terminal 3 (for background jobs)
+```
+
+Emails are logged to `storage/logs/laravel.log`.
+
+---
+
+## Description
+
 This repository contains a basic laravel application to explore universities in Germany. Your task is to implement a few features/views in this application. The tasks are designed for you to present basic Fullstack skills and how you can read up on new concepts. You should be able to complete the tasks in a few hours, way shorter if you are already familiar with Laravel and Vue.js. If you need more time, that's not a problem. Please don't hesitate to contact me if you have any questions.
 
 ## Setup
