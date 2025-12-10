@@ -2,6 +2,8 @@
 
 ## My Implementation
 
+All four tasks have been completed, including additional features like dark mode, custom TypeScript type definitions and comprehensive test coverage.
+
 ### Technical Details
 
 - **Query Scopes**: Moved filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`).
@@ -19,17 +21,15 @@ Start the development servers:
 php artisan serve      # Terminal 1
 npm run dev            # Terminal 2
 php artisan queue:work # Terminal 3 (for background jobs)
-```
-
-### Email Implemantation
-
-Download Mailpit via: https://mailpit.axllent.org/docs/install/
-
-Start Mailpit:
-```bash
 mailpit                # Terminal 4 (for mail receiving)
 ```
+
 Emails are send to localhost:8025
+
+### Running Tests
+```bash
+./vendor/bin/pest
+```
 
 ---
 
