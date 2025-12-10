@@ -12,7 +12,7 @@ All four tasks have been completed, including additional features like dark mode
 - **Form Handling**: Used Inertia's `useForm` helper for form state, validation errors, and loading states.
 - **Background Jobs**: Application processing runs via queue with 15-second delay; emails send to Mailpit: localhost:8025.
 - **HTTPS Accessor**: Model accessor converts university homepage URLs from HTTP to HTTPS for security.
-- **Test Coverage**: 41 tests covering models, controllers, validation rules, query scopes, and job processing.
+- **Test Coverage**: 39 tests covering models, controllers, validation rules, query scopes, and job processing.
 
 ### Running the Application
 
