@@ -16,13 +16,13 @@
             <!-- Search Input -->
             <div class="flex-1">
                 <input v-model="filters.search" type="text" placeholder="Search by name..."
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500" />
+                    class="w-full bg-white rounded-xl shadow-md px-4 py-2 text-sm focus:border-[#6C4AFE] focus:ring-[#6C4AFE]" />
             </div>
 
             <!-- Course Filter -->
             <div class="sm:w-64">
                 <select v-model="filters.course"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500">
+                    class="w-full bg-white rounded-xl shadow-md px-4 py-2 text-sm focus:border-[#6C4AFE] focus:ring-[#6C4AFE]">
                     <option value="">All Courses</option>
                     <option v-for="course in courses" :key="course.id" :value="course.id">
                         {{ course.name }}
@@ -32,30 +32,29 @@
 
             <!-- Rating Checkbox -->
             <div class="flex items-center self-end sm:self-auto">
-                <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+                <label class="flex items-center gap-2 text-sm text-gray-700 font-semibold cursor-pointer">
                     <input v-model="filters.rating" type="checkbox"
-                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" />
+                        class="h-4 w-4 rounded border-[#6C4AFE] text-blue-600 focus:ring-blue-500 cursor-pointer" />
                     Rating ≥ 4
                 </label>
             </div>
         </div>
 
         <!-- Desktop Table (hidden on mobile) -->
-        <div v-if="universities.data.length > 0"
-            class="mt-8 overflow-hidden rounded-lg border border-gray-200 hidden sm:block">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
+        <div v-if="universities.data.length > 0" class="mt-8 overflow-hidden rounded-xl shadow-lg hidden sm:block">
+            <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                <thead class="bg-dark-powder">
                     <tr>
-                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                        <th class="w-[62%] px-6 py-3 text-left text-sm font-semibold text-gray-900">
                             Name
                         </th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                        <th class="w-21%] px-6 py-3 text-left text-sm font-semibold text-gray-900">
                             Website
                         </th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                        <th class="w-[6%] px-6 py-3 text-left text-sm font-semibold text-gray-900">
                             Courses
                         </th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                        <th class="w-[11%] px-6 py-3 text-left text-sm font-semibold text-gray-900">
                             Avg. Rating
                         </th>
                     </tr>
@@ -72,10 +71,10 @@
                                 {{ university.homepage }}
                             </a>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
+                        <td class="px-6 py-4 text-sm text-right font-semibold text-gray-600">
                             {{ university.courses_count }}
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
+                        <td class="px-6 py-4 text-sm text-right font-semibold text-gray-600">
                             {{ university.courses_avg_rating?.toFixed(1) ?? 'N/A' }}
                         </td>
                     </tr>
@@ -85,8 +84,7 @@
 
         <!-- Mobile Cards (hidden on desktop) -->
         <div v-if="universities.data.length > 0" class="mt-8 space-y-4 sm:hidden">
-            <div v-for="university in universities.data" :key="university.id"
-                class="rounded-lg border border-gray-200 bg-white p-4">
+            <div v-for="university in universities.data" :key="university.id" class="rounded-xl shadow-lg bg-white p-4">
                 <Link :href="`/universities/${university.id}`" class="hover:text-blue-600">
                     <h3 class="font-medium text-gray-900 hover:underline">{{ university.name }}</h3>
                 </Link>
@@ -118,9 +116,9 @@
             </p>
             <nav class="flex flex-wrap gap-1">
                 <Link v-for="link in universities.links" :key="link.label" :href="link.url ?? ''"
-                    class="px-3 py-2 text-sm rounded-md" :class="{
-                        'bg-blue-600 text-white': link.active,
-                        'bg-gray-100 text-gray-700 hover:bg-gray-200': !link.active && link.url,
+                    class="px-3 py-2 text-sm rounded-lg" :class="{
+                        'bg-custom-purple text-white': link.active,
+                        'bg-dark-powder text-gray-900 hover:bg-gray-200': !link.active && link.url,
                         'bg-gray-50 text-gray-400 cursor-not-allowed': !link.url
                     }">
                     <span v-html="link.label"></span>

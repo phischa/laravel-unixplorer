@@ -24,7 +24,7 @@ class UniversityController extends Controller
             ->filterByCourse($request->course)
             ->minRating($request->boolean('rating'))
             ->orderByDesc('courses_avg_rating')
-            ->paginate(10)
+            ->paginate(25)
             ->withQueryString();
 
         return Inertia::render('Universities/Index', [

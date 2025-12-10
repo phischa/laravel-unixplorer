@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white">
+    <header class="bg-light-powder">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div class="flex flex-1">
                 <div class="hidden lg:flex lg:gap-x-12">
@@ -19,7 +19,7 @@
             </div>
             <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
-                <span class="text-xl font-black text-blue-800">UniXplorer</span>
+                <span class="text-xl font-black text-custom-purple">UniXplorer</span>
             </a>
             <div class="flex flex-1 justify-end"></div>
         </nav>

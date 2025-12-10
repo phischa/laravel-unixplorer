@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -74,5 +75,25 @@ class University extends Model
              WHERE universities.id = course_university.university_id) >= 4
         ');
         });
+    }
+
+    /**
+     * Get the homepage URL, ensuring HTTPS.
+     */
+    protected function homepage(): Attribute
+    {
+        return Attribute::make(
+            get: function (?string $value): ?string {
+                // If no value exists, return null
+                if ($value === null) {
+                    return null;
+                }
+
+                // Replace http:// with https://
+                $secureUrl = str_replace('http://', 'https://', $value);
+
+                return $secureUrl;
+            }
+        );
     }
 }

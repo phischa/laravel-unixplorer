@@ -4,11 +4,12 @@
 
 ### Technical Details
 
-- **Query Scopes**: Moved filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`)
-- **SQLite Compatibility**: Used raw SQL subquery for rating filter since SQLite doesn't support HAVING on non-aggregated queries
-- **Flash Messages**: Configured Inertia middleware to share flash messages
-- **Form Handling**: Used Inertia's `useForm` helper for form state, validation errors, and loading states
-- **Background Jobs**: Application processing runs via queue with 15-second delay; emails logged to `storage/logs/laravel.log`
+- **Query Scopes**: Moved filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`).
+- **SQLite Compatibility**: Used raw SQL subquery for rating filter since SQLite doesn't support HAVING on non-aggregated queries.
+- **Flash Messages**: Configured Inertia middleware to share flash messages.
+- **Form Handling**: Used Inertia's `useForm` helper for form state, validation errors, and loading states.
+- **Background Jobs**: Application processing runs via queue with 15-second delay; emails logged to `storage/logs/laravel.log`.
+- **HTTPS Accessor**: Model accessor converts university homepage URLs from HTTP to HTTPS for security.
 
 ### Running the Application
 

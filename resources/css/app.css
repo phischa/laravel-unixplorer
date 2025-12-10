@@ -5,4 +5,8 @@
 
 @theme inline {
     --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-custom-purple: #6D4AFF;
+    --color-custom-dark-purple: #6A47E0;
+    --color-light-powder: #F7F5FE;
+    --color-dark-powder: #E5E2F2;
 }

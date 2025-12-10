@@ -6,7 +6,7 @@
 
     <div class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Back Link -->
-        <Link href="/" class="text-sm text-blue-600 hover:underline">
+        <Link href="/" class="text-sm text-[#6C4AFE] hover:underline">
             ← Back to list
         </Link>
 
@@ -24,7 +24,7 @@
             <h2 class="text-xl font-semibold text-gray-900">Courses Offered</h2>
             <div class="mt-4 flex flex-wrap gap-2">
                 <span v-for="course in university.courses" :key="course.id"
-                    class="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700">
+                    class="rounded-xl bg-dark-powder px-3 py-1 text-sm text-gray-700">
                     {{ course.name }}
                 </span>
             </div>
@@ -45,8 +45,8 @@
                     <label for="name" class="block text-sm font-medium text-gray-700">
                         Name
                     </label>
-                    <input id="name" v-model="form.name" type="text"
-                        class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    <input id="name" v-model="form.name" type="text" placeholder="Enter your name here."
+                        class="mt-1 w-full rounded-xl shadow-md bg-white px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                         :class="{ 'border-red-500': form.errors.name }" />
                     <p v-if="form.errors.name" class="mt-1 text-sm text-red-600">
                         {{ form.errors.name }}
@@ -58,8 +58,8 @@
                     <label for="email" class="block text-sm font-medium text-gray-700">
                         Email
                     </label>
-                    <input id="email" v-model="form.email" type="email"
-                        class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    <input id="email" v-model="form.email" type="email" placeholder="Enter your email address here."
+                        class="mt-1 w-full rounded-xl shadow-md bg-white px-4 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                         :class="{ 'border-red-500': form.errors.email }" />
                     <p v-if="form.errors.email" class="mt-1 text-sm text-red-600">
                         {{ form.errors.email }}
@@ -68,7 +68,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" :disabled="form.processing"
-                    class="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 cursor-pointer">
+                    class="mt-4 w-full rounded-lg bg-custom-purple px-4 py-2 text-sm font-semibold text-white hover:bg-custom-dark-purple disabled:opacity-50 cursor-pointer">
                     {{ form.processing ? 'Submitting...' : 'Submit Application' }}
                 </button>
             </form>
