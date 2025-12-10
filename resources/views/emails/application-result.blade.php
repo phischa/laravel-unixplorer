@@ -4,7 +4,7 @@
     <title>Application Result</title>
 </head>
 <body>
-    <h1>Hello {{ $application->name }},</h1>
+    <h3>Hello {{ $application->name }},</h3>
 
     @if($application->status === 'accepted')
         <p>Congratulations! Your application to <strong>{{ $application->university->name }}</strong> has been accepted.</p>

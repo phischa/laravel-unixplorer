@@ -71,7 +71,7 @@
                                 {{ university.name }}
                             </Link>
                         </td>
-                        <td class="px-6 py-4 text-sm text-blue-600 dark:text-custom-light-purple">
+                        <td class="px-6 py-4 text-sm text-custom-purple dark:text-custom-light-purple">
                             <a :href="university.homepage ?? ''" target="_blank" class="hover:underline">
                                 {{ university.homepage }}
                             </a>
@@ -96,7 +96,7 @@
                     <h3 class="font-medium text-gray-900 dark:text-dark-text hover:underline">{{ university.name }}</h3>
                 </Link>
                 <a :href="university.homepage ?? ''" target="_blank"
-                    class="mt-1 block text-sm text-blue-600 dark:text-custom-light-purple hover:underline truncate">
+                    class="mt-1 block text-sm text-custom-purple dark:text-custom-light-purple hover:underline truncate">
                     {{ university.homepage }}
                 </a>
                 <div class="mt-3 flex justify-between text-sm text-gray-500 dark:text-dark-text">
