@@ -71,10 +71,10 @@
                                 {{ university.homepage }}
                             </a>
                         </td>
-                        <td class="px-6 py-4 text-sm text-right font-semibold text-gray-600">
+                        <td class="px-6 py-4 text-sm text-center font-semibold text-gray-600">
                             {{ university.courses_count }}
                         </td>
-                        <td class="px-6 py-4 text-sm text-right font-semibold text-gray-600">
+                        <td class="px-6 py-4 text-sm text-center font-semibold text-gray-600">
                             {{ university.courses_avg_rating?.toFixed(1) ?? 'N/A' }}
                         </td>
                     </tr>
