@@ -2,11 +2,11 @@
 
 ## My Implementation
 
-All four tasks have been completed, including additional features like dark mode, custom TypeScript type definitions and comprehensive test coverage.
+All four tasks have been completed, including additional features like dark mode, custom TypeScript type definitions and feature/unit test coverage.
 
 ### Technical Details
 
-- **Query Scopes**: Moved filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`).
+- **Query Scopes**: Wrote the filter logic to reusable scopes in the University model (`scopeSearch`, `scopeFilterByCourse`, `scopeMinRating`).
 - **SQLite Compatibility**: Used raw SQL subquery for rating filter since SQLite doesn't support HAVING on non-aggregated queries.
 - **Flash Messages**: Configured Inertia middleware to share flash messages.
 - **Form Handling**: Used Inertia's `useForm` helper for form state, validation errors, and loading states.
